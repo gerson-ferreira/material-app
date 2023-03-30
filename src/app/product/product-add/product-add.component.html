@@ -1,0 +1,6 @@
+<!-- product-add.component.html -->
+<h2>Adicionar Produto</h2>
+<form (ngSubmit)="onSubmit()" #addForm="ngForm">
+  <!-- Campos do formulário -->
+  <button type="submit" [disabled]="!addForm.valid">Adicionar Produto</button>
+</form>
