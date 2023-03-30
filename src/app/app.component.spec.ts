@@ -1,31 +1,37 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SideNavMenuComponent } from './shared/side-nav-menu/side-nav-menu.component';
+import { ToolbarMenuComponent } from './shared/toolbar-menu/toolbar-menu.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        MatToolbarModule,
+        MatIconModule,
+        MatListModule,
+        MatSidenavModule,
+        NoopAnimationsModule,
+        SharedModule
+      ],
       declarations: [
-        AppComponent
+        AppComponent,
+        SideNavMenuComponent,
+        ToolbarMenuComponent
       ],
     }).compileComponents();
   });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'material-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('material-app');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('material-app app is running!');
-  });
 });

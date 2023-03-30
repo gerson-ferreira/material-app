@@ -1,14 +1,14 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/spec",
-    "types": [
-      "jest"
-    ]
+    "outDir": "../out-tsc/spec",
+    "types": ["jest", "node"],
+    "esModuleInterop": true,
+    "target": "es2015",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "allowJs": true
   },
-  "include": [
-    "src/**/*.spec.ts",
-    "src/**/*.d.ts"
-  ]
+  "files": ["test-setup.ts"],
+  "include": ["**/*.spec.ts", "**/*.d.ts"]
 }
