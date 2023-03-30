@@ -1,0 +1,78 @@
+/* Filtro */
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.filter-container label {
+  font-weight: bold;
+  color: #3f51b5;
+  margin-right: 8px;
+}
+
+.filter-container select {
+  background-color: white;
+  border: 1px solid #3f51b5;
+  color: #3f51b5;
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.filter-container select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.5);
+}
+
+/* Tabela */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: table;
+}
+
+/* Cabeçalho */
+.product-table thead {
+  background-color: #3f51b5;
+}
+
+.product-table thead th {
+  color: white;
+  font-weight: bold;
+  padding: 16px;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+}
+
+.product-table thead th:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Corpo da tabela */
+.product-table tbody {
+  background-color: white;
+}
+
+.product-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.product-table tbody tr:hover {
+  background-color: rgba(63, 81, 181, 0.1);
+}
+
+.product-table tbody td {
+  padding: 16px;
+  text-align: left;
+}
+
+/* Responsividade */
+@media screen and (max-width: 600px) {
+  .product-table thead th,
+  .product-table tbody td {
+    padding: 8px;
+  }
+}

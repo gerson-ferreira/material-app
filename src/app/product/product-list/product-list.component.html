@@ -1,0 +1,39 @@
+<div class="filter-container">
+  <label for="situacao">Situação:</label>
+  <select
+    [(ngModel)]="filtroSituacao"
+    (ngModelChange)="filtrarProdutos($event)"
+  >
+    <option value="all">Todos</option>
+    <option value="expired">Vencidos</option>
+    <option value="notExpired">Não Vencidos</option>
+  </select>
+</div>
+<table mat-table class="product-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th (click)="sort('name')">Nome</th>
+      <th (click)="sort('price')">Preço</th>
+      <th>Quantidade</th>
+      <th>Data de Fabricação</th>
+      <th>Data de Validade</th>
+      <th>Situação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr mat-row *ngFor="let produto of produtosFiltrados">
+      <td>{{ produto.id }}</td>
+      <td>{{ produto.name }}</td>
+      <td>{{ produto.price | currency }}</td>
+      <td>{{ produto.quantity }}</td>
+      <td>{{ produto.manufactureDate | date }}</td>
+      <td>{{ produto.expiryDate | date }}</td>
+      <td
+        [ngStyle]="{ color: produto.situation === 'expired' ? 'red' : 'green' }"
+      >
+        {{ produto.situation }}
+      </td>
+    </tr>
+  </tbody>
+</table>

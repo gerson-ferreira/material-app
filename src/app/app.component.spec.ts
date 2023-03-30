@@ -8,6 +8,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { of } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -18,12 +21,28 @@ describe('AppComponent', () => {
         MatListModule,
         MatSidenavModule,
         NoopAnimationsModule,
-        SharedModule
+        SharedModule,
+        RouterModule.forRoot([]),
       ],
-      declarations: [
-        AppComponent,
-        SideNavMenuComponent,
-        ToolbarMenuComponent
+      declarations: [AppComponent, SideNavMenuComponent, ToolbarMenuComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            paramMap: of({
+              get: (key: string) => {
+                return 'fakeValue';
+              },
+            }),
+            snapshot: {
+              paramMap: {
+                get: (key: string) => {
+                  return 'fakeValue';
+                },
+              },
+            },
+          },
+        },
       ],
     }).compileComponents();
   });
@@ -33,5 +52,4 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
-
 });

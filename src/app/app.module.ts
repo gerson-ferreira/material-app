@@ -8,6 +8,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from './shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +25,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

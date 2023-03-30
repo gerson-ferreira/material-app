@@ -6,6 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu.component';
 import { ToolbarMenuComponent } from './toolbar-menu/toolbar-menu.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [SideNavMenuComponent, ToolbarMenuComponent],
@@ -18,6 +19,7 @@ import { ToolbarMenuComponent } from './toolbar-menu/toolbar-menu.component';
     MatIconModule,
     MatListModule,
     MatSidenavModule,
+    RouterModule
     // Validar modulos
   ],
   exports: [SideNavMenuComponent, ToolbarMenuComponent],

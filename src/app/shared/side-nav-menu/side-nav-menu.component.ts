@@ -8,4 +8,9 @@ import { Component, Input } from '@angular/core';
 export class SideNavMenuComponent {
   @Input() sidenav: any;
   @Input() toggleSidenav: () => void = () => {};
+
+  onNavClick() {
+    console.log('Navegação clicada');
+  }
+  
 }

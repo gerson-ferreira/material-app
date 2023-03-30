@@ -1,0 +1,5 @@
+<h2>Editar Produto</h2>
+<form (ngSubmit)="onSubmit()" #editForm="ngForm">
+  <!-- Campos do formulário -->
+  <button type="submit" [disabled]="!editForm.valid">Salvar Alterações</button>
+</form>

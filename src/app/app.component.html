@@ -6,7 +6,7 @@
   <mat-sidenav-content>
     <app-toolbar-menu [toggleSidenav]="sidenav.toggle.bind(sidenav)"></app-toolbar-menu>
     <div class="content">
-      <!-- Conteúdo da aplicação vai aqui -->
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
