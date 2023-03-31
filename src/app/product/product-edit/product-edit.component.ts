@@ -1,4 +1,3 @@
-// product-edit.component.ts
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,7 +8,5 @@ import { Component } from '@angular/core';
 export class ProductEditComponent {
   constructor() {}
 
-  onSubmit(): void {
-    // Lógica para editar o produto
-  }
+  onSubmit(): void {}
 }

@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-
-import { NavigationEnd, Router } from '@angular/router';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { AuthService } from './login/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,15 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'material-app';
+  constructor(private authService: AuthService, private cd: ChangeDetectorRef) {
+    if (this.authService.loginStatusChanged) {
+      this.authService.loginStatusChanged.subscribe(() => {
+        this.cd.detectChanges();
+      });
+    }
+  }
 
-  constructor(private router: Router) {}
+  isVerifyLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
 }

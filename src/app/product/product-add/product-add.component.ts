@@ -1,4 +1,3 @@
-// product-add.component.ts
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,7 +8,5 @@ import { Component } from '@angular/core';
 export class ProductAddComponent {
   constructor() {}
 
-  onSubmit(): void {
-    // Lógica para adicionar o produto
-  }
+  onSubmit(): void {}
 }

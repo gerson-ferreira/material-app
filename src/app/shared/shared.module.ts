@@ -7,21 +7,21 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SideNavMenuComponent } from './side-nav-menu/side-nav-menu.component';
 import { ToolbarMenuComponent } from './toolbar-menu/toolbar-menu.component';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../login/services/auth.service';
 
 @NgModule({
   declarations: [SideNavMenuComponent, ToolbarMenuComponent],
   imports: [
     CommonModule,
-    // Validar modulos
     MatIconModule,
     MatIconModule,
     MatToolbarModule,
     MatIconModule,
     MatListModule,
     MatSidenavModule,
-    RouterModule
-    // Validar modulos
+    RouterModule,
   ],
   exports: [SideNavMenuComponent, ToolbarMenuComponent],
+  providers: [AuthService],
 })
 export class SharedModule {}

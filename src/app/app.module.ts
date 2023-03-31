@@ -9,25 +9,27 @@ import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from './shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { LoginModule } from './login/login.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthService } from './login/services/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    // validar os modules
     MatToolbarModule,
     MatIconModule,
     MatIconModule,
     MatIconModule,
     MatListModule,
     MatSidenavModule,
-    // validar os modules
+    MatSnackBarModule,
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
+    LoginModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

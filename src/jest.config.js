@@ -1,23 +1,23 @@
 module.exports = {
-    preset: 'jest-preset-angular',
-    roots: ['<rootDir>/src/'],
-    testMatch: ['**/+(*.)+(spec).+(ts)'],
-    setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-    transform: {
-      '^.+\\.(ts|html)$': 'jest-preset-angular',
-    },
-    moduleNameMapper: {
-      'src/(.*)': '<rootDir>/src/$1',
-      '@core/(.*)': '<rootDir>/src/app/core/$1',
-      '@shared/(.*)': '<rootDir>/src/app/shared/$1',
-    },
-    transformIgnorePatterns: ['node_modules/(?!@ngrx)'],
-    snapshotSerializers: [
-      'jest-preset-angular/build/AngularSnapshotSerializer.js',
-      'jest-preset-angular/build/HTMLCommentSerializer.js',
-    ],
-    collectCoverage: true,
-    coverageReporters: ['html'],
-    coverageDirectory: 'coverage/',
-  };
-  
+  preset: 'jest-preset-angular',
+  setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts'],
+  testPathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/dist/',
+    '<rootDir>/src/test.ts',
+  ],
+  moduleNameMapper: {
+    '@app/(.*)': '<rootDir>/src/app/$1',
+    '@shared/(.*)': '<rootDir>/src/app/shared/$1',
+    '@env': '<rootDir>/src/environments/environment',
+  },
+  transformIgnorePatterns: ['node_modules/(?!@ngrx)'],
+  collectCoverageFrom: ['src/app/**/*.ts'],
+  coveragePathIgnorePatterns: [
+    'src/app/*-routing.module.ts',
+    'src/app/*.module.ts',
+    'src/app/*.array.ts',
+    'src/app/shared/models/',
+    'src/app/shared/interfaces/',
+  ],
+};
