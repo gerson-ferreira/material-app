@@ -9,11 +9,6 @@ Instalar as dependências: npm install
 Rodar aplicação: ng serve
 Rodar testes unitários: npm test
 
-Requisitos:
-
-Angular CLI: 14.2.10
-Node: 16.19.1 -Package Manager: npm 9.6.0
-
 # Development server
 Execute o comando ng serve para iniciar um servidor de desenvolvimento. Navegue para http://localhost:4200/. A aplicação irá recarregar automaticamente se você modificar qualquer um dos arquivos de origem.
 
