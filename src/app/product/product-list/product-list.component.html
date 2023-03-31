@@ -1,9 +1,6 @@
 <div class="filter-container">
   <label for="situacao">Situação:</label>
-  <select
-    [(ngModel)]="filtroSituacao"
-    (ngModelChange)="filtrarProdutos($event)"
-  >
+  <select [(ngModel)]="filtroSituacao" (ngModelChange)="filtrarSituacao()">
     <option value="all">Todos</option>
     <option value="expired">Vencidos</option>
     <option value="notExpired">Não Vencidos</option>
@@ -12,27 +9,34 @@
 <table mat-table class="product-table">
   <thead>
     <tr>
-      <th>ID</th>
+      <th (click)="sort('id')">ID</th>
       <th (click)="sort('name')">Nome</th>
       <th (click)="sort('price')">Preço</th>
-      <th>Quantidade</th>
-      <th>Data de Fabricação</th>
-      <th>Data de Validade</th>
-      <th>Situação</th>
+      <th (click)="sort('quantity')">Quantidade</th>
+      <th (click)="sort('manufactureDate')">Data de Fabricação</th>
+      <th (click)="sort('expiryDate')">Data de Validade</th>
+      <th (click)="sort('situation')">Situação</th>
     </tr>
   </thead>
   <tbody>
     <tr mat-row *ngFor="let produto of produtosFiltrados">
       <td>{{ produto.id }}</td>
       <td>{{ produto.name }}</td>
-      <td>{{ produto.price | currency }}</td>
+      <td>
+        {{
+          produto.price.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+          })
+        }}
+      </td>
       <td>{{ produto.quantity }}</td>
-      <td>{{ produto.manufactureDate | date }}</td>
-      <td>{{ produto.expiryDate | date }}</td>
+      <td>{{ produto.manufactureDate | date : "dd/MM/yyyy" }}</td>
+      <td>{{ produto.expiryDate | date : "dd/MM/yyyy" }}</td>
       <td
         [ngStyle]="{ color: produto.situation === 'expired' ? 'red' : 'green' }"
       >
-        {{ produto.situation }}
+        {{ produto.situation === "expired" ? "Expirado" : "No prazo" }}
       </td>
     </tr>
   </tbody>

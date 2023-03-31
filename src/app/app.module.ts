@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthService } from './login/services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { AuthService } from './login/services/auth.service';
     BrowserAnimationsModule,
     SharedModule,
     LoginModule,
+    HttpClientModule,
     AppRoutingModule,
   ],
   providers: [AuthService],
