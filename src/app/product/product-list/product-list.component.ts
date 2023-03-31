@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  situation: string;
-  manufactureDate: string;
-  expiryDate: string;
-}
+import { Product } from '../models/product.model';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -16,28 +8,31 @@ interface Product {
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  produtos: Product[] = [
-    {
-      id: 1,
-      name: 'Produto A',
-      price: 25.99,
-      quantity: 10,
-      situation: 'expired',
-      manufactureDate: '2023-01-01',
-      expiryDate: '2023-12-31',
-    },
-  ];
+  produtos: Product[] = [];
   produtosFiltrados: Product[] = [];
-
   sortOrder: 'asc' | 'desc' = 'asc';
   sortKey: keyof Product = 'name';
   filtroSituacao: string = 'all';
 
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
+    this.loadProducts();
     this.filtrarSituacao();
     this.atualizarSituacao();
+  }
+
+  loadProducts(): void {
+    this.productService.loadProducts().subscribe({
+      next: (products) => {
+        this.produtos = products;
+        this.filtrarSituacao();
+        this.atualizarSituacao();
+      },
+      error: (error) => {
+        console.error('Error fetching products:', error);
+      },
+    });
   }
 
   filtrarSituacao(): void {
@@ -49,11 +44,12 @@ export class ProductListComponent implements OnInit {
         break;
       case 'notExpired':
         this.produtosFiltrados = this.produtos.filter(
-          (p) => p.situation !== 'notExpired'
+          (p) => p.situation !== 'expired'
         );
         break;
       default:
         this.produtosFiltrados = this.produtos;
+        break;
     }
   }
 
@@ -61,7 +57,7 @@ export class ProductListComponent implements OnInit {
     const today = new Date();
     this.produtos = this.produtos.map((produto) => {
       const dataValidade = new Date(produto.expiryDate);
-      produto.situation = dataValidade < today ? 'Vencido' : 'No prazo';
+      produto.situation = dataValidade < today ? 'expired' : 'notExpired';
       return produto;
     });
   }
