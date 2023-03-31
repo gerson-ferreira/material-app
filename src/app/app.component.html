@@ -4,10 +4,12 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <app-toolbar-menu [toggleSidenav]="sidenav.toggle.bind(sidenav)"></app-toolbar-menu>
+    <app-toolbar-menu
+      *ngIf="isVerifyLoggedIn()"
+      [toggleSidenav]="sidenav.toggle.bind(sidenav)"
+    ></app-toolbar-menu>
     <div class="content">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-

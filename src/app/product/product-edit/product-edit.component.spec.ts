@@ -10,9 +10,7 @@ describe('ProductEditComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProductEditComponent],
-      imports: [
-        FormsModule, // Adicione esta linha
-      ],
+      imports: [FormsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductEditComponent);

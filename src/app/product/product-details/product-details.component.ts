@@ -1,6 +1,4 @@
-// product-details.component.ts
 import { Component } from '@angular/core';
-
 
 @Component({
   selector: 'app-product-details',
@@ -9,6 +7,4 @@ import { Component } from '@angular/core';
 })
 export class ProductDetailsComponent {
   constructor() {}
-
-  // Lógica para exibir detalhes do produto
 }
