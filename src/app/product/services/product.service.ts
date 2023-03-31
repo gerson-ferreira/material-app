@@ -7,11 +7,9 @@ import { Product } from '../models/product.model';
   providedIn: 'root',
 })
 export class ProductService {
-
   constructor(private http: HttpClient) {}
 
   loadProducts(): Observable<Product[]> {
     return this.http.get<Product[]>('assets/mocks/products.json');
   }
-
 }

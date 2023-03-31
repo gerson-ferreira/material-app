@@ -20,6 +20,7 @@ const users = [
 export class AuthService {
   private loggedIn = false;
   loginStatusChanged: Subject<boolean>;
+  authService: any;
 
   constructor() {
     this.loginStatusChanged = new Subject<boolean>();
